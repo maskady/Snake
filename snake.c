@@ -23,6 +23,11 @@
 #include "point.h"
 
 
+void clear_screen(){
+    printf("\033[2J\033[1;1H");
+}
+
+
 /**
  * @brief Generates random coordinates for a fruit within the game boundaries.
  *
@@ -316,7 +321,7 @@ int main()
     }
     struct timespec ts;
     
-    system("clear");
+    clear_screen();
     printf("\033[1;1H");
     printf("\033[0;31m"); // Set text color to red
     switch (gameover) {
@@ -346,7 +351,7 @@ int main()
         ts.tv_nsec = 0;
         nanosleep(&ts, NULL);
     }
-    system("clear");
+    clear_screen();
     system("tput cnorm");
     system("stty icanon echo");
     return 0;
